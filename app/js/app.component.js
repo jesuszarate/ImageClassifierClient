@@ -1,4 +1,4 @@
-System.register(['angular2/core', "./config.service", "./uploadImage.component"], function(exports_1, context_1) {
+System.register(['angular2/core', "./uploadImage.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,12 @@ System.register(['angular2/core', "./config.service", "./uploadImage.component"]
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, config_service_1, uploadImage_component_1;
+    var core_1, uploadImage_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (config_service_1_1) {
-                config_service_1 = config_service_1_1;
             },
             function (uploadImage_component_1_1) {
                 uploadImage_component_1 = uploadImage_component_1_1;
@@ -26,7 +23,6 @@ System.register(['angular2/core', "./config.service", "./uploadImage.component"]
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.mainHeading = config_service_1.Config.MAIN_HEADING;
                 }
                 AppComponent = __decorate([
                     core_1.Component({

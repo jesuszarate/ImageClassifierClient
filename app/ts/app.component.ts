@@ -9,5 +9,4 @@ import {UploadImageComponent} from "./uploadImage.component";
 })
 
 export class AppComponent {
-    mainHeading = Config.MAIN_HEADING;
 }
