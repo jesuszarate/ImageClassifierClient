@@ -1,20 +1,12 @@
 <div class="banner btn">
     <label id="dragBox" (drop)="drop($event)" (dragover)="allowDrop($event)" class="btn">
-        <input id="id_image" name="image" type="file" style="display: none">
+        <input id="id_image" name="image" type="file" (change)="readURL();" style="display: none">
 
-        <img class="img" src="woods.png" alt=""/>
+        <img id="blah" class="img" src="woods.png" alt=""/>
+         <!--<img id="blah" src="#" alt="" />-->
+
         <h1 class="header">{{ mainHeading }}</h1>
         <form class="content" action="/pp" method="post" enctype="multipart/form-data">
-            <!--{% csrf_token %}-->
-            <!--<p>-->
-            <!--<input id="id_image" type="file" class="" name="image">-->
-            <!--</p>-->
-
-            <!--<p>-->
-                <!--<label class="btn btn-default">-->
-                    <!--Browse-->
-                <!--</label>-->
-            <!--</p>-->
 
             <button type="button" class="btn btn-info btn-circle btn-lg" value="Submit">Submit</button>
 

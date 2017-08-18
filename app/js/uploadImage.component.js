@@ -37,6 +37,22 @@ System.register(['angular2/core', "./config.service"], function(exports_1, conte
                     var dataTransfer = event.dataTransfer.getData('data');
                     event.preventDefault();
                 };
+                UploadImageComponent.prototype.readURL = function () {
+                    var input = document.getElementById("id_image");
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (ev) {
+                            // reader.onload(e) {
+                            var element = document.getElementById('blah');
+                            element.setAttribute('src', ev.target.result);
+                            //$('#blah')
+                            //     .attr('src', ev.target.result)
+                            // .width(150)
+                            // 150.height(200);
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                };
                 UploadImageComponent = __decorate([
                     core_1.Component({
                         selector: 'uploadImage',
