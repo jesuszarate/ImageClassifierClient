@@ -32,26 +32,23 @@ System.register(['angular2/core', "./config.service"], function(exports_1, conte
                 UploadImageComponent.prototype.drag = function (event, data) {
                     event.dataTransfer.setData('data', data);
                 };
-                UploadImageComponent.prototype.drop = function (event, data) {
-                    console.log("droped");
-                    var dataTransfer = event.dataTransfer.getData('data');
+                UploadImageComponent.prototype.drop = function (event) {
+                    event.stopPropagation();
                     event.preventDefault();
+                    var dt = event.dataTransfer;
+                    var files = dt.files;
+                    //this code line fires the 'handleImage' function (imageLoader change event)
+                    var imageLoader = document.getElementById('id_image');
+                    imageLoader.files = files;
                 };
-                UploadImageComponent.prototype.readURL = function () {
-                    var input = document.getElementById("id_image");
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (ev) {
-                            // reader.onload(e) {
-                            var element = document.getElementById('blah');
-                            element.setAttribute('src', ev.target.result);
-                            //$('#blah')
-                            //     .attr('src', ev.target.result)
-                            // .width(150)
-                            // 150.height(200);
-                        };
-                        reader.readAsDataURL(input.files[0]);
-                    }
+                UploadImageComponent.prototype.handleImage = function (e) {
+                    document.getElementById('header').style.visibility = 'hidden';
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        var uploadImage = document.getElementById("uploadedImage");
+                        uploadImage.setAttribute('src', event.target.result);
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
                 };
                 UploadImageComponent = __decorate([
                     core_1.Component({

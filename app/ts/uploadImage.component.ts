@@ -1,47 +1,45 @@
 import {Component} from 'angular2/core';
 import {Config} from "./config.service";
-import {element} from "angular2/src/upgrade/angular_js";
-
 
 @Component({
     selector: 'uploadImage',
     templateUrl: 'app/ts/uploadImage.component.html'
 })
 
-export class UploadImageComponent{
+export class UploadImageComponent {
     mainHeading = Config.MAIN_HEADING;
 
     allowDrop(event) {
         console.log("allowedDrop");
         event.preventDefault();
     }
+
     drag(event, data) {
+
         event.dataTransfer.setData('data', data);
     }
 
-    drop(event, data) {
-        console.log("droped");
-        let dataTransfer = event.dataTransfer.getData('data');
+    drop(event) {
+
+        event.stopPropagation();
         event.preventDefault();
+
+        var dt = event.dataTransfer;
+        var files = dt.files;
+
+        //this code line fires the 'handleImage' function (imageLoader change event)
+        var imageLoader = <HTMLInputElement>document.getElementById('id_image');
+        imageLoader.files = files;
     }
 
-    readURL(){
-        var input = <HTMLInputElement>document.getElementById("id_image");
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(ev:any){
-            // reader.onload(e) {
-                var element = document.getElementById('blah');
-                element.setAttribute('src', ev.target.result);
-                //$('#blah')
-                //     .attr('src', ev.target.result)
-                    // .width(150)
-                    // 150.height(200);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
+    handleImage(e) {
+        document.getElementById('header').style.visibility = 'hidden';
+        var reader = new FileReader();
+        reader.onload = function (event: any) {
+            var uploadImage = document.getElementById("uploadedImage");
+            uploadImage.setAttribute('src', event.target.result)
+        };
+        reader.readAsDataURL(e.target.files[0]);
     }
 }
 

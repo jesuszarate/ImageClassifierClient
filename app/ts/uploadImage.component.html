@@ -1,18 +1,24 @@
-<div class="banner btn">
-    <label id="dragBox" (drop)="drop($event)" (dragover)="allowDrop($event)" class="btn">
-        <input id="id_image" name="image" type="file" (change)="readURL();" style="display: none">
+<div class="row">
+        <div class="col-lg-1" style="background-color: red"></div>
+        <!--<div class="col-lg-10" style="background-color: aqua">-->
+            <div class="banner btn col-lg-10">
+                <label id="dragBox" (drag)="drag($event, data)" (drop)="drop($event)" (dragover)="allowDrop($event)" class="btn">
+                    <input id="id_image" name="image" type="file" (change)="handleImage($event);" style="display: none">
 
-        <img id="blah" class="img" src="woods.png" alt=""/>
-         <!--<img id="blah" src="#" alt="" />-->
+                    <img id="uploadedImage" class="img-responsive img" src="woods.png" alt=""/>
+                    <!--<img id="blah" src="#" alt="" />-->
 
-        <h1 class="header">{{ mainHeading }}</h1>
-        <form class="content" action="/pp" method="post" enctype="multipart/form-data">
+                    <h1 id='header' class="header">{{ mainHeading }}</h1>
 
-            <button type="button" class="btn btn-info btn-circle btn-lg" value="Submit">Submit</button>
+                    <form class="content" action="/pp" method="post" enctype="multipart/form-data">
+                        <button type="button" class="btn btn-info btn-circle btn-lg" value="Submit">Submit</button>
+                        <!--<button type="submit" class="btn btn-info btn-circle btn-lg" value="Submit">Submit</button>-->
+                        <!--<input type="submit" value="Submit"/>-->
+                    </form>
 
-            <!--<button type="submit" class="btn btn-info btn-circle btn-lg" value="Submit">Submit</button>-->
-            <!--<input type="submit" value="Submit"/>-->
-        </form>
-    </label>
-</div>
+                </label>
+            </div>
+        <!--</div>-->
+        <div class="col-lg-1" style="background-color: purple"></div>
+    </div>
 
